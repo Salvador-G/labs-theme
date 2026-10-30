@@ -1,0 +1,100 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  siteName: string;
+  colores?: {
+    primary?: string;
+    primaryDark?: string;
+    accent?: string;
+    surface?: string;
+    ink?: string;
+  };
+  schemaData: Record<string, unknown>;
+  /** Ruta de la imagen para compartir (1200×630), por ejemplo "/og.png". */
+  ogImage?: string;
+  /** Úsalo en demos para prospectos: evita que Google las indexe. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  siteName,
+  colores,
+  schemaData,
+  ogImage,
+  noindex = false,
+} = Astro.props;
+
+// Solo se escriben las variables que el sitio define; el resto usa los valores de global.css.
+const cssVars = Object.entries({
+  "--color-primary": colores?.primary,
+  "--color-primary-dark": colores?.primaryDark,
+  "--color-accent": colores?.accent,
+  "--color-surface": colores?.surface,
+  "--color-ink": colores?.ink,
+})
+  .filter(([, valor]) => Boolean(valor))
+  .map(([nombre, valor]) => `${nombre}: ${valor}`)
+  .join("; ");
+
+// canonical y og:url requieren `site` en astro.config.mjs
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
+const ogImageUrl =
+  ogImage && Astro.site ? new URL(ogImage, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="es-PE" style={cssVars || undefined}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={colores?.primary ?? "#1e564f"} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- Coloca tu icono en /public/favicon.svg -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Open Graph y tarjeta de redes -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta
+      name="twitter:card"
+      content={ogImageUrl ? "summary_large_image" : "summary"}
+    />
+
+    <!-- Fraunces (títulos) + Plus Jakarta Sans (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Datos estructurados (sin aggregateRating) -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </head>
+  <body>
+    <a
+      href="#contenido-principal"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary-dark focus:px-5 focus:py-3 focus:font-medium focus:text-surface focus:shadow-lg"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <slot />
+  </body>
+</html>

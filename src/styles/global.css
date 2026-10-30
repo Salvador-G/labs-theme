@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+  Tokens de marca (Tailwind v4).
+  `static` obliga a emitir todas las variables aunque Tailwind no detecte su uso.
+  Estos son los valores por defecto: cada consultorio los sobrescribe con
+  `site.colores` en index.astro (el Layout los aplica como estilo en <html>).
+  Las utilidades se usan así: bg-primary, text-ink/80, border-ink/15, font-heading…
+*/
+@theme static {
+  --color-primary: #1e564f;
+  --color-primary-dark: #133b36;
+  --color-accent: #a94b30;
+  --color-surface: #f7f5f0;
+  --color-ink: #182220;
+
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-heading: "Fraunces", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+  }
+
+  /* Foco visible con contraste suficiente (WCAG AA) */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Tailwind v4 deja los botones con cursor por defecto */
+  button,
+  [role="button"],
+  summary {
+    cursor: pointer;
+  }
+
+  /* Oculta el marcador nativo de <details> en WebKit; usamos un icono propio */
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
