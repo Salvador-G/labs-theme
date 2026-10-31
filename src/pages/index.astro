@@ -253,7 +253,7 @@ if (hayMarcadores(visible)) pendientes.push("quedan [marcadores] sin reemplazar"
 if (imagenes.some((i) => !i.src)) pendientes.push("faltan fotos reales");
 if (!site.ubicacion.mapaEmbedUrl) pendientes.push("falta la URL del mapa");
 
-const esDemo = Boolean(import.meta.env.PUBLIC_DEMO);
+const esDemo = import.meta.env.PUBLIC_DEMO === "true";
 if (import.meta.env.PROD && !esDemo && pendientes.length > 0) {
   throw new Error(`No se puede publicar: ${pendientes.join("; ")}.`);
 }
