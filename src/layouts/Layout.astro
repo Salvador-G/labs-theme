@@ -1,10 +1,12 @@
 ---
 import "../styles/global.css";
+import { getGoogleFontsUrl, type PresetName } from "../lib/presets";
 
 interface Props {
   title: string;
   description: string;
   siteName: string;
+  preset?: PresetName;
   colores?: {
     primary?: string;
     primaryDark?: string;
@@ -13,23 +15,23 @@ interface Props {
     ink?: string;
   };
   schemaData: Record<string, unknown>;
-  /** Ruta de la imagen para compartir (1200×630), por ejemplo "/og.png". */
   ogImage?: string;
-  /** Úsalo en demos para prospectos: evita que Google las indexe. */
   noindex?: boolean;
+  esDemo?: boolean;
 }
 
 const {
   title,
   description,
   siteName,
+  preset = "sereno",
   colores,
   schemaData,
   ogImage,
   noindex = false,
+    esDemo = false,
 } = Astro.props;
 
-// Solo se escriben las variables que el sitio define; el resto usa los valores de global.css.
 const cssVars = Object.entries({
   "--color-primary": colores?.primary,
   "--color-primary-dark": colores?.primaryDark,
@@ -41,16 +43,17 @@ const cssVars = Object.entries({
   .map(([nombre, valor]) => `${nombre}: ${valor}`)
   .join("; ");
 
-// canonical y og:url requieren `site` en astro.config.mjs
 const canonical = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).href
   : undefined;
 const ogImageUrl =
   ogImage && Astro.site ? new URL(ogImage, Astro.site).href : undefined;
+
+const googleFontsUrl = getGoogleFontsUrl(preset, esDemo);
 ---
 
 <!doctype html>
-<html lang="es-PE" style={cssVars || undefined}>
+<html lang="es-PE" data-preset={preset} style={cssVars || undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,9 +62,6 @@ const ogImageUrl =
     <meta name="theme-color" content={colores?.primary ?? "#1e564f"} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
-
-    <!-- Coloca tu icono en /public/favicon.svg -->
-    <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> -->
 
     <!-- Open Graph y tarjeta de redes -->
     <meta property="og:type" content="website" />
@@ -76,25 +76,74 @@ const ogImageUrl =
       content={ogImageUrl ? "summary_large_image" : "summary"}
     />
 
-    <!-- Fraunces (títulos) + Plus Jakarta Sans (texto) -->
+    <!-- Fuentes dinámicas según el preset -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href={googleFontsUrl} rel="stylesheet" />
 
-    <!-- Datos estructurados (sin aggregateRating) -->
+    <!-- Datos estructurados -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+    {
+      noindex && (
+        <script is:inline>
+          const estilo = new URLSearchParams(location.search).get("estilo"); if
+          (estilo) document.documentElement.dataset.preset = estilo;
+        </script>
+      )
+    }
   </head>
   <body>
     <a
       href="#contenido-principal"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary-dark focus:px-5 focus:py-3 focus:font-medium focus:text-surface focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-(--radius-btn) focus:bg-primary-dark focus:px-5 focus:py-3 focus:font-medium focus:text-surface focus:shadow-lg"
     >
       Saltar al contenido principal
     </a>
 
     <slot />
+
+    {/* BARRA FLOTANTE DE DEMO */}
+    {esDemo && (
+      <div class="fixed bottom-4 left-4 z-50 flex items-center gap-1 rounded-full border border-ink/15 bg-surface/95 p-1.5 shadow-xl backdrop-blur-md">
+        <span class="hidden px-2 text-xs font-semibold tracking-wider text-ink/70 uppercase sm:inline-block">Estilo:</span>
+        <button data-demo-preset="sereno" class="rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-ink/5">Sereno</button>
+        <button data-demo-preset="editorial" class="rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-ink/5">Editorial</button>
+        <button data-demo-preset="cercano" class="rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-ink/5">Cercano</button>
+      </div>
+    )}
+
+    {esDemo && (
+      <script is:inline>
+        const root = document.documentElement;
+        const btns = document.querySelectorAll('[data-demo-preset]');
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPreset = urlParams.get('estilo') || root.dataset.preset || 'sereno';
+
+        function setPreset(preset) {
+          root.dataset.preset = preset;
+          btns.forEach(b => {
+            if (b.dataset.demoPreset === preset) {
+              b.classList.add('bg-primary', 'text-surface');
+              b.classList.remove('text-ink', 'hover:bg-ink/5');
+            } else {
+              b.classList.remove('bg-primary', 'text-surface');
+              b.classList.add('text-ink', 'hover:bg-ink/5');
+            }
+          });
+          const newUrl = new URL(window.location);
+          newUrl.searchParams.set('estilo', preset);
+          window.history.replaceState({}, '', newUrl);
+        }
+
+        setPreset(currentPreset);
+
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            setPreset(btn.dataset.demoPreset);
+          });
+        });
+      </script>
+    )}
   </body>
 </html>

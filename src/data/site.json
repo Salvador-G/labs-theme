@@ -1,0 +1,240 @@
+{
+  "nombre": "[Nombre del Consultorio]",
+  "tipo": "dentista",
+  "seo": {
+    "titulo": "[Nombre del Consultorio] | Atención en [Distrito]",
+    "descripcion": "Consultorio odontológico en [Distrito]. Prevención, diagnóstico y tratamientos dentales con cita previa."
+  },
+  "diseno": {
+    "preset": "sereno",
+    "colores": {
+      "primary": "#1E564F",
+      "primaryDark": "#133B36",
+      "accent": "#A94B30",
+      "surface": "#F7F5F0",
+      "ink": "#182220"
+    },
+    "variantes": {
+      "hero": "dividido",
+      "servicios": "lista"
+    },
+    "orden": [
+      "hero",
+      "servicios",
+      "primera-cita",
+      "equipo",
+      "resultados",
+      "testimonios",
+      "ubicacion",
+      "faq",
+      "contacto"
+    ]
+  },
+  "mostrarAntesDespues": true,
+  "mostrarTestimonios": true,
+  "mostrarFormulario": true,
+  "textosSecciones": {
+    "serviciosNav": "Tratamientos",
+    "serviciosTitulo": "Qué podemos hacer por tu salud bucal",
+    "serviciosSubtitulo": "Cada tratamiento empieza con una evaluación y una explicación clara de tus opciones.",
+    "primeraCitaNav": "Primera cita",
+    "primeraCitaTitulo": "Qué esperar en tu primera consulta",
+    "primeraCitaSubtitulo": "Saber cómo es el proceso de antemano hace que la visita sea más tranquila."
+  },
+  "hero": {
+    "titular": "Cuidado dental claro y preventivo en [Distrito]",
+    "subtitulo": "Te explicamos cada alternativa de tratamiento antes de tomar cualquier decisión.",
+    "imagen": {
+      "src": "",
+      "alt": "",
+      "placeholder": "Foto: consultorio odontológico limpio y luminoso"
+    },
+    "datosConfianza": [
+      { "etiqueta": "Colegiatura COP", "valor": "[N.º de colegiatura]" },
+      { "etiqueta": "Atención", "valor": "Con cita previa" },
+      { "etiqueta": "Ubicación", "valor": "[Distrito]" }
+    ]
+  },
+  "servicios": [
+    {
+      "nombre": "Evaluación y diagnóstico",
+      "descripcion": "Revisión clínica de dientes y encías para definir un plan de cuidado a tu medida.",
+      "href": ""
+    },
+    {
+      "nombre": "Limpieza dental y prevención",
+      "descripcion": "Limpieza profesional, control de placa y pautas de higiene adaptadas a tu caso.",
+      "href": ""
+    },
+    {
+      "nombre": "Restauraciones",
+      "descripcion": "Reparación de caries y piezas desgastadas para recuperar función y aspecto natural.",
+      "href": ""
+    },
+    {
+      "nombre": "Ortodoncia",
+      "descripcion": "Estudio de la mordida y corrección progresiva de la posición de los dientes.",
+      "href": ""
+    },
+    {
+      "nombre": "Rehabilitación oral y prótesis",
+      "descripcion": "Reposición de piezas ausentes con coronas, puentes o prótesis.",
+      "href": ""
+    },
+    {
+      "nombre": "Odontopediatría",
+      "descripcion": "Atención preventiva y adaptación gradual para niñas, niños y adolescentes.",
+      "href": ""
+    }
+  ],
+  "pasosPrimeraCita": [
+    {
+      "numero": "1",
+      "titulo": "Reservas tu hora",
+      "descripcion": "Coordinamos día y hora por WhatsApp o teléfono."
+    },
+    {
+      "numero": "2",
+      "titulo": "Conversamos antes de revisar",
+      "descripcion": "Te escuchamos: el motivo de tu visita, tus antecedentes y tus dudas."
+    },
+    {
+      "numero": "3",
+      "titulo": "Revisión clínica",
+      "descripcion": "Examinamos con cuidado y te explicamos en lenguaje claro lo que encontramos."
+    },
+    {
+      "numero": "4",
+      "titulo": "Plan por etapas",
+      "descripcion": "Te presentamos las alternativas para que decidas cómo y cuándo avanzar."
+    }
+  ],
+  "equipo": [
+    {
+      "nombre": "[Nombre del doctor]",
+      "especialidad": "Cirujano dentista",
+      "colegiaturaLabel": "COP",
+      "colegiaturaNumero": "[N.º de colegiatura]",
+      "foto": {
+        "src": "",
+        "alt": "",
+        "placeholder": "Foto: retrato profesional del doctor en el consultorio"
+      },
+      "frase": "[Frase breve del profesional sobre cómo atiende]",
+      "formacion": [
+        "Título profesional: [Universidad]",
+        "Especialización o posgrado: [Área] — [Institución]",
+        "Colegiatura vigente y habilitada: [N.º de colegiatura]"
+      ]
+    }
+  ],
+  "casosAntesDespues": [
+    {
+      "id": "caso-1",
+      "titulo": "[Título del caso 1]",
+      "descripcion": "[Qué se hizo, en una línea]",
+      "antes": { "src": "", "alt": "", "placeholder": "Foto: antes (caso 1)" },
+      "despues": { "src": "", "alt": "", "placeholder": "Foto: después (caso 1)" }
+    },
+    {
+      "id": "caso-2",
+      "titulo": "[Título del caso 2]",
+      "descripcion": "[Qué se hizo, en una línea]",
+      "antes": { "src": "", "alt": "", "placeholder": "Foto: antes (caso 2)" },
+      "despues": { "src": "", "alt": "", "placeholder": "Foto: después (caso 2)" }
+    },
+    {
+      "id": "caso-3",
+      "titulo": "[Título del caso 3]",
+      "descripcion": "[Qué se hizo, en una línea]",
+      "antes": { "src": "", "alt": "", "placeholder": "Foto: antes (caso 3)" },
+      "despues": { "src": "", "alt": "", "placeholder": "Foto: después (caso 3)" }
+    }
+  ],
+  "leyendaAntesDespues": "Imágenes publicadas con consentimiento del paciente. Los resultados pueden variar.",
+  "testimonios": [
+    {
+      "autor": "[Iniciales, ej. M. R.]",
+      "tratamiento": "[Tratamiento]",
+      "comentario": "[Comentario real y verificable, publicado con permiso del paciente]"
+    },
+    {
+      "autor": "[Iniciales, ej. J. C.]",
+      "tratamiento": "[Tratamiento]",
+      "comentario": "[Comentario real y verificable, publicado con permiso del paciente]"
+    },
+    {
+      "autor": "[Iniciales, ej. L. V.]",
+      "tratamiento": "[Tratamiento]",
+      "comentario": "[Comentario real y verificable, publicado con permiso del paciente]"
+    }
+  ],
+  "googleReviewsUrl": "",
+  "ubicacion": {
+    "distrito": "[Distrito]",
+    "direccion": "[Av. o calle, número, piso o consultorio]",
+    "ciudad": "[Ciudad]",
+    "referencia": "[Referencia: a cuántas cuadras de qué lugar conocido]",
+    "comoLlegar": [
+      "[Transporte público: paradero y líneas cercanas]",
+      "[En auto o taxi: por dónde ingresar y dónde estacionar]"
+    ],
+    "horarios": [
+      { "dias": "Lunes a viernes", "horas": "[Horario]" },
+      { "dias": "Sábados", "horas": "[Horario]" },
+      { "dias": "Domingos y feriados", "horas": "[Cerrado o con cita previa]" }
+    ],
+    "horariosSchema": [],
+    "mapaEmbedUrl": "",
+    "mapaPlaceholderTexto": "Mapa: ubicación del consultorio en [Distrito]"
+  },
+  "contacto": {
+    "telefonoVisible": "[+51 999 999 999]",
+    "telefonoHref": "tel:[+51999999999]",
+    "whatsappNumero": "[51999999999]",
+    "whatsappMensaje": "Hola, quisiera consultar disponibilidad para una cita en [Nombre del Consultorio].",
+    "correo": "[contacto@tudominio.pe]",
+    "motivosSelect": [
+      "Agendar primera consulta",
+      "Consulta sobre un servicio",
+      "Reprogramar una cita",
+      "Consulta administrativa",
+      "Otro motivo"
+    ]
+  },
+  "faq": [
+    {
+      "pregunta": "¿Necesito cita para ser atendido?",
+      "respuesta": "Para dedicar a cada persona el tiempo que necesita, coordinamos las consultas por WhatsApp o teléfono. [Indicar si también hay atención sin cita]"
+    },
+    {
+      "pregunta": "¿Puedo reprogramar o cancelar mi cita?",
+      "respuesta": "Sí. Avísanos por WhatsApp o llamada con al menos [24] horas de anticipación para poder ofrecer ese horario a otra persona."
+    },
+    {
+      "pregunta": "¿Qué medios de pago aceptan?",
+      "respuesta": "[Detallar medios de pago (efectivo, tarjetas, Yape, Plin, transferencia) y el tipo de comprobante que se emite]"
+    },
+    {
+      "pregunta": "¿Qué debo llevar a mi primera consulta?",
+      "respuesta": "Tu documento de identidad y, si los tienes, informes o exámenes recientes relacionados con tu consulta."
+    },
+    {
+      "pregunta": "¿Cómo sabré qué tratamiento necesito y cuánto costará?",
+      "respuesta": "Depende de cada caso. Después de la evaluación te explicamos las opciones y su costo antes de empezar cualquier procedimiento."
+    },
+    {
+      "pregunta": "¿El consultorio tiene acceso para personas con movilidad reducida?",
+      "respuesta": "[Indicar si hay acceso, rampa o ascensor]"
+    }
+  ],
+  "footer": {
+    "privacidadHref": "/privacidad",
+    "libroReclamacionesHref": "[URL del Libro de Reclamaciones de Indecopi del cliente]",
+    "redesSociales": [
+      { "nombre": "Instagram", "href": "" },
+      { "nombre": "Facebook", "href": "" }
+    ],
+    "derechos": "© 2026 [Nombre del Consultorio]. Todos los derechos reservados."
+  }
+}

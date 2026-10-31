@@ -1,0 +1,111 @@
+---
+import type { SiteConfig } from "../../lib/publish-guard";
+
+interface Props {
+  site: SiteConfig;
+  whatsappLink: string;
+  waPath: string;
+}
+
+const { site, whatsappLink, waPath } = Astro.props;
+---
+
+<section id="inicio" class="scroll-mt-20 py-(--space-section)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p
+          class="inline-flex items-center gap-2 rounded-(--radius-btn) border border-primary/25 bg-primary/5 px-3.5 py-1.5 text-sm font-medium text-primary-dark"
+        >
+          <span class="h-2 w-2 rounded-full bg-accent" aria-hidden="true"
+          ></span>
+          Atención en {site.ubicacion.distrito}
+        </p>
+        <h1
+          class="mt-5 text-3xl leading-tight font-semibold tracking-tight text-ink sm:text-4xl lg:text-5xl"
+        >
+          {site.hero.titular}
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/85">
+          {site.hero.subtitulo}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 rounded-(--radius-btn) bg-primary px-7 py-4 text-base font-semibold text-surface transition-colors hover:bg-primary-dark"
+          >
+            <svg
+              class="h-5 w-5 fill-current"
+              viewBox="0 0 24 24"
+              aria-hidden="true"><path d={waPath}></path></svg
+            >
+            Agendar por WhatsApp
+          </a>
+          <a
+            href={site.contacto.telefonoHref}
+            class="inline-flex items-center justify-center gap-2 rounded-(--radius-btn) border-2 border-primary-dark/25 px-7 py-3.5 text-base font-semibold text-primary-dark transition-colors hover:border-primary-dark"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.75"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+              ></path>
+            </svg>
+            Llamar al {site.contacto.telefonoVisible}
+          </a>
+        </div>
+
+        <dl
+          class="mt-10 grid grid-cols-1 gap-4 border-t border-ink/15 pt-8 sm:grid-cols-3"
+        >
+          {
+            site.hero.datosConfianza.map((dato) => (
+              <div class="border-l-2 border-accent pl-3.5">
+                <dt class="text-sm text-ink/75">{dato.etiqueta}</dt>
+                <dd class="mt-0.5 text-sm font-semibold text-ink">
+                  {dato.valor}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div
+          class="relative aspect-[4/5] w-full overflow-hidden rounded-(--radius-card) bg-primary/10"
+        >
+          {
+            site.hero.imagen.src ? (
+              <img
+                src={site.hero.imagen.src}
+                alt={site.hero.imagen.alt}
+                width="800"
+                height="1000"
+                fetchpriority="high"
+                class="h-full w-full object-cover"
+              />
+            ) : (
+              <div class="flex h-full items-end p-6">
+                <p class="w-full rounded-(--radius-card) bg-surface/95 p-4 text-sm font-medium text-ink">
+                  {site.hero.imagen.placeholder}
+                </p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
