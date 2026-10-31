@@ -9,5 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   site: "https://github.io",
-  base: "/school-theme",
+  base: "/labs-theme",
 });
