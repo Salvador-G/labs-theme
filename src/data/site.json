@@ -1,9 +1,9 @@
 {
-  "nombre": "[Nombre del Consultorio]",
-  "tipo": "dentista",
+  "nombre": "Skin Center Perú",
+  "tipo": "dermatólogo",
   "seo": {
-    "titulo": "[Nombre del Consultorio] | Atención en [Distrito]",
-    "descripcion": "Consultorio odontológico en [Distrito]. Prevención, diagnóstico y tratamientos dentales con cita previa."
+    "titulo": "Skin Center Perú | Atención en Miraflores",
+    "descripcion": "Consultorio dermatológico en Miraflores. Prevención, diagnóstico y tratamientos dermatológicos con cita previa."
   },
   "diseno": {
     "preset": "sereno",
@@ -35,14 +35,14 @@
   "mostrarFormulario": true,
   "textosSecciones": {
     "serviciosNav": "Tratamientos",
-    "serviciosTitulo": "Qué podemos hacer por tu salud bucal",
+    "serviciosTitulo": "Qué podemos hacer por tu salud cutánea",
     "serviciosSubtitulo": "Cada tratamiento empieza con una evaluación y una explicación clara de tus opciones.",
     "primeraCitaNav": "Primera cita",
     "primeraCitaTitulo": "Qué esperar en tu primera consulta",
     "primeraCitaSubtitulo": "Saber cómo es el proceso de antemano hace que la visita sea más tranquila."
   },
   "hero": {
-    "titular": "Cuidado dental claro y preventivo en [Distrito]",
+    "titular": "Cuidado dermatológico claro y preventivo en [Distrito]",
     "subtitulo": "Te explicamos cada alternativa de tratamiento antes de tomar cualquier decisión.",
     "imagen": {
       "src": "",
