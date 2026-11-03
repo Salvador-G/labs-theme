@@ -1,8 +1,8 @@
 {
-  "nombre": "Skin Center",
+  "nombre": "[Nombre del consultorio]",
   "tipo": "dermatólogo",
   "seo": {
-    "titulo": "Skin Center | Atención en Miraflores",
+    "titulo": "[Nombre del consultorio] | Atención en Miraflores",
     "descripcion": "Consultorio dermatológico en Miraflores. Prevención, diagnóstico y tratamientos dermatológicos con cita previa."
   },
   "diseno": {
