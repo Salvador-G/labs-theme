@@ -1,14 +1,14 @@
 {
-  "nombre": "Skin Center Perú",
+  "nombre": "Skin Center",
   "tipo": "dermatólogo",
   "seo": {
-    "titulo": "Skin Center Perú | Atención en Miraflores",
+    "titulo": "Skin Center | Atención en Miraflores",
     "descripcion": "Consultorio dermatológico en Miraflores. Prevención, diagnóstico y tratamientos dermatológicos con cita previa."
   },
   "diseno": {
     "preset": "sereno",
     "colores": {
-      "primary": "#1E564F",
+      "primary": "#765B30",
       "primaryDark": "#133B36",
       "accent": "#A94B30",
       "surface": "#F7F5F0",
